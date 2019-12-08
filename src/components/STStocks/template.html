@@ -1,0 +1,9 @@
+<VContainer fluid class="STStocks mx-0">
+    <STAsset 
+        class="STStocks__asset mb-5" 
+        v-for="asset in assets" 
+        :asset="asset" 
+        :key="asset.name"
+        @buy=onBuyAsset
+    ></STAsset>
+</VContainer>

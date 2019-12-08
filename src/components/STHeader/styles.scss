@@ -1,0 +1,18 @@
+@import "@/assets/styles/colors.scss";
+
+.STHeader{
+    background-color: $grey-light;
+    height: 64px;
+    overflow: hidden !important;
+
+    &__menu-item{
+        display: inline-block;
+        font-size: 2vw;
+        margin-right: 5%;
+        text-decoration: none;
+    }
+
+    &__menu-item:hover{
+        font-weight: 700;
+    }
+}

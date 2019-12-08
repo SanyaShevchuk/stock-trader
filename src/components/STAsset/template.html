@@ -1,0 +1,17 @@
+<VCard class="STAsset">
+    <VContainer class="pa-0">
+        <VRow class="STAsset__header ma-0">
+            <VCardTitle class="STAsset__asset-name">
+                {{asset.name}}
+                <VCardSubtitle class="STAsset__asset-price ma-0 pa-4 pl-0">
+                    (Price: {{asset.price}})
+                </VCardSubtitle>
+            </VCardTitle>
+        </VRow>
+        <VRow class="STAsset__actions ma-0">
+            <input placeholder="Quantity" class="STAsset__quantity-input" v-model="quantity"/>
+            <VBtn outlined class="STAsset__buy" :disabled="!canBuy" @click="buyAsset($event)">Buy</VBtn>
+        </VRow>
+    </VContainer>
+</VCard>
+
