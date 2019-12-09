@@ -3,16 +3,50 @@
 
 <script lang="ts">
 import Vue from "vue";
-import STAsset from "@/components/STAsset/STAsset.vue";
-import { mapState } from "vuex";
+import { mapState, mapGetters, mapMutations } from "vuex";
+
+import STNoData from "@/components/STNoData/STNoData.vue";
+import STSellAsset from "@/components/STSellAsset/STSellAsset.vue";
+import { IBoughtAsset } from "@/interfaces/stocks";
+
+interface ISellAsset {
+  id: number;
+  quantity: number;
+  sell: number;
+}
 
 export default Vue.extend({
   name: "STPortfolio",
   components: {
-    STAsset
+    STSellAsset,
+    STNoData
+  },
+  data() {
+    return {
+      noDataText: "You haven't bought any assets"
+    };
   },
   computed: {
-    ...mapState("stocks", ["boughtAssets"])
+    ...mapGetters("stocks", ["getBoughtAssets"]),
+    isAnyData() {
+      // @ts-ignore
+      console.log(this.getBoughtAssets, this.getBoughtAssets.length);
+      // @ts-ignore
+      return this.getBoughtAssets.length;
+    }
+  },
+  methods: {
+    ...mapMutations("stocks", ["sellBoughtAsset", "removeBoughtAsset"]),
+    onSellAsset(asset: ISellAsset) {
+      const { quantity, sell } = asset;
+      if (quantity - sell > 0) {
+        // @ts-ignore
+        this.sellBoughtAsset({ id: asset.id, quantity: sell });
+      } else {
+        // @ts-ignore
+        this.removeBoughtAsset(asset.id);
+      }
+    }
   }
 });
 </script>

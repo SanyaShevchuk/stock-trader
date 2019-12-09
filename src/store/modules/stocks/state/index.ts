@@ -28,11 +28,5 @@ export const state: IStocksState = {
       price: 6
     }
   ],
-  boughtAssets: [
-    {
-      id: 1,
-      name: "BMW",
-      price: 81
-    }
-  ]
+  boughtAssets: []
 };

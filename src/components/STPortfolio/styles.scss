@@ -7,8 +7,10 @@
     margin: 15px;
     flex-wrap: wrap;
 
-    &__asset {
+    &__asset.v-card {
+        background-color: red;
         width: 45%;
+        height: 100%;
 
         .STAsset__header {
             background-color: $blue-light !important;

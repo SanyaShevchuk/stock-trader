@@ -4,6 +4,7 @@ export interface IAsset {
   price: number;
 }
 
-export interface IBoughtAsset extends IAsset {
+export interface IBoughtAsset {
+  id: number;
   quantity: number;
 }

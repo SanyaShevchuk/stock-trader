@@ -1,8 +1,10 @@
-<VContainer fluid class="STPortfolio mx-0">
-    <STAsset 
+<VContainer  v-if="isAnyData" fluid class="STPortfolio mx-0">
+    <STSellAsset
         class="STPortfolio__asset mb-5" 
-        v-for="asset in boughtAssets" 
+        v-for="asset in getBoughtAssets" 
         :asset="asset" 
         :key="asset.name"
-    ></STAsset>
+        @sell="onSellAsset"
+    />
 </VContainer>
+<STNoData v-else :text="noDataText"/>

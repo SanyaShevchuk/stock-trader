@@ -4,23 +4,24 @@
 <script lang="ts">
 import Vue from "vue";
 import { mapState, mapMutations, mapGetters } from "vuex";
+import _some from "lodash/some";
 
-import STAsset from "@/components/STAsset/STAsset.vue";
+import STBuyAsset from "@/components/STBuyAsset/STBuyAsset.vue";
 import { IBoughtAsset } from "@/interfaces/stocks";
 
 export default Vue.extend({
   name: "STStocks",
   components: {
-    STAsset
+    STBuyAsset
   },
   computed: {
-    ...mapState("stocks", ["assets"])
+    ...mapState("stocks", ["assets", "boughtAssets"])
   },
   methods: {
     ...mapGetters("stocks", ["isAssetBought"]),
     ...mapMutations("stocks", ["addBoughtAsset", "updateBoughtAsset"]),
     onBuyAsset(asset: IBoughtAsset) {
-      this.isAssetBought(asset)
+      _some(this.boughtAssets, { id: asset.id })
         ? this.updateBoughtAsset(asset)
         : this.addBoughtAsset(asset);
     }

@@ -8,7 +8,15 @@ import { IAsset } from "@/interfaces/stocks";
 
 export default Vue.extend({
   name: "STAsset",
+  model: {
+    prop: "quantity",
+    event: "input"
+  },
   props: {
+    quantity: {
+      type: [Number, String],
+      required: true
+    },
     asset: {
       type: Object as PropType<IAsset>,
       required: true
@@ -16,18 +24,18 @@ export default Vue.extend({
   },
   data() {
     return {
-      quantity: null
+      value: this.quantity
     };
   },
-  computed: {
-    canBuy(): Boolean {
-      return Boolean(this.quantity);
+  methods: {
+    handleInput(value: string) {
+      const quantity = value ? parseInt(value) : 0;
+      this.$emit("input", quantity);
     }
   },
-  methods: {
-    buyAsset() {
-      const { quantity, asset } = this;
-      this.$emit("buy", { ...asset, quantity });
+  watch: {
+    quantity(updatedQuantity) {
+      this.value = this.quantity;
     }
   }
 });

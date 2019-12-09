@@ -1,0 +1,16 @@
+@import "@/assets/styles/colors.scss";
+
+.STBuyAsset {
+    &__asset-info {
+        font-size: 12px;
+    }
+
+    &__buy {
+        background-color: $green !important;
+        display: inline-block;
+        color: white !important;
+        width: 40px;
+        height: 30px;
+        border-radius: 5px;
+    }
+}
