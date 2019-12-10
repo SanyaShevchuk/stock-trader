@@ -3,7 +3,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { mapState, mapGetters, mapMutations } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 import STNoData from "@/components/STNoData/STNoData.vue";
 import STSellAsset from "@/components/STSellAsset/STSellAsset.vue";
@@ -30,22 +30,14 @@ export default Vue.extend({
     ...mapGetters("stocks", ["getBoughtAssets"]),
     isAnyData() {
       // @ts-ignore
-      console.log(this.getBoughtAssets, this.getBoughtAssets.length);
-      // @ts-ignore
       return this.getBoughtAssets.length;
     }
   },
   methods: {
-    ...mapMutations("stocks", ["sellBoughtAsset", "removeBoughtAsset"]),
+    ...mapActions("stocks", ["sellAssets"]),
     onSellAsset(asset: ISellAsset) {
-      const { quantity, sell } = asset;
-      if (quantity - sell > 0) {
-        // @ts-ignore
-        this.sellBoughtAsset({ id: asset.id, quantity: sell });
-      } else {
-        // @ts-ignore
-        this.removeBoughtAsset(asset.id);
-      }
+      // @ts-ignore
+      this.sellAssets(asset);
     }
   }
 });

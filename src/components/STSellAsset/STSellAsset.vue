@@ -33,8 +33,7 @@ export default Vue.extend({
   methods: {
     onSellAsset() {
       const { quantity, asset } = this;
-      const assetInfo = _pick(asset, ["id", "quantity"]);
-      this.$emit("sell", { ...assetInfo, sell: quantity });
+      this.$emit("sell", { ...asset, sell: quantity });
     }
   }
 });

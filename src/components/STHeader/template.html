@@ -1,12 +1,16 @@
- <VAppBar class="STHeader">
+ <VAppBar height="48" class="STHeader my-2">
 <!--    <VToolbar>-->
-        <RouterLink
+    <RouterLink
         v-for='header in headers'
         class='STHeader__menu-item'
         :key='header.value'
         :to="header.path"
-        >
+    >
         {{header.value}}
-        </RouterLink>
+    </RouterLink>
+
+    <VSpacer />
+    
+    <span class='STHeader__action-item'>Funds: ${{cash}}</span>
 <!--    </VToolbar>-->
 </VAppBar>

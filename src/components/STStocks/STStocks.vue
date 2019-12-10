@@ -3,7 +3,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { mapState, mapMutations, mapGetters } from "vuex";
+import { mapState, mapActions } from "vuex";
 import _some from "lodash/some";
 
 import STBuyAsset from "@/components/STBuyAsset/STBuyAsset.vue";
@@ -15,15 +15,12 @@ export default Vue.extend({
     STBuyAsset
   },
   computed: {
-    ...mapState("stocks", ["assets", "boughtAssets"])
+    ...mapState("stocks", ["assets"])
   },
   methods: {
-    ...mapGetters("stocks", ["isAssetBought"]),
-    ...mapMutations("stocks", ["addBoughtAsset", "updateBoughtAsset"]),
+    ...mapActions("stocks", ["buyAssets"]),
     onBuyAsset(asset: IBoughtAsset) {
-      _some(this.boughtAssets, { id: asset.id })
-        ? this.updateBoughtAsset(asset)
-        : this.addBoughtAsset(asset);
+      this.buyAssets(asset);
     }
   }
 });

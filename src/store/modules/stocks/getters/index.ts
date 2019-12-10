@@ -4,7 +4,7 @@ import _map from "lodash/map";
 
 import { IStocksState } from "../state";
 import { IRootState } from "@/store";
-import { IBoughtAsset } from "@/interfaces/stocks";
+import { IBoughtAsset, IAsset } from "@/interfaces/stocks";
 
 export const getters: GetterTree<IStocksState, IRootState> = {
   getBoughtAssets(state) {

@@ -3,6 +3,7 @@ import { IAsset, IBoughtAsset } from "@/interfaces/stocks";
 export interface IStocksState {
   assets: IAsset[];
   boughtAssets: IBoughtAsset[];
+  cash: number;
 }
 
 export const state: IStocksState = {
@@ -28,5 +29,6 @@ export const state: IStocksState = {
       price: 6
     }
   ],
-  boughtAssets: []
+  boughtAssets: [],
+  cash: 10000
 };
