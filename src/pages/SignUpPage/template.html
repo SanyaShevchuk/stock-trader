@@ -1,0 +1,23 @@
+<VContainer class="SignUpPage">
+    <VCard class="SignUpPage__form">
+        <VForm>
+            <h2 class="SignUpPage__title">Sign Up</h2>
+            <VTextField 
+                label="Name"
+                v-model="name"
+            />
+            <VTextField 
+                label="Email"
+                v-model="email"
+            />
+            <VTextField 
+                label="Password"
+                type="password"
+                v-model="password"
+            />
+            <div class="SignUpPage__form-actions">
+                <VBtn class="SignUpPage__sign-up primary" @click="onSignUp">Sign Up</VBtn>
+            </div>
+        </VForm>
+    </VCard>
+</VContainer>

@@ -12,5 +12,20 @@
     <VSpacer />
     
     <span class='STHeader__action-item'>Funds: ${{cash}}</span>
-<!--    </VToolbar>-->
+    <span @click="updateStocks">End day</span>
+    <VIcon @click="openAccountMenu">alarm</VIcon>
+    <VMenu attach="#kkk" absolute>
+        <template v-slot:activator="{ on }">
+            <VBtn id="kkk" v-on="on">account</VBtn>
+        </template>
+        <VList>
+            <VListItem>
+                Settings
+            </VListItem>
+            <VListItem>
+                Log out
+            </VListItem>
+        </VList>
+    </VMenu>
+   
 </VAppBar>

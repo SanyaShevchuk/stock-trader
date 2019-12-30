@@ -3,7 +3,8 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
+import routesLinks from "@/constants/routes";
 
 export default Vue.extend({
   name: "STHeader",
@@ -20,11 +21,21 @@ export default Vue.extend({
       {
         value: "Stocks",
         path: "stocks"
+      },
+      {
+        value: "Statistics",
+        path: "statistics"
       }
     ]
   }),
   computed: {
     ...mapState("stocks", ["cash"])
+  },
+  methods: {
+    ...mapActions("stocks", ["updateStocks"]),
+    openAccountMenu() {
+      this.$router.push(routesLinks.account);
+    }
   }
 });
 </script>

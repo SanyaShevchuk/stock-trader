@@ -4,6 +4,7 @@
 <script lang="ts">
 import Vue from "vue";
 import { mapState, mapGetters, mapActions } from "vuex";
+import _isEmpty from "lodash/isEmpty";
 
 import STNoData from "@/components/STNoData/STNoData.vue";
 import STSellAsset from "@/components/STSellAsset/STSellAsset.vue";
@@ -30,7 +31,7 @@ export default Vue.extend({
     ...mapGetters("stocks", ["getBoughtAssets"]),
     isAnyData() {
       // @ts-ignore
-      return this.getBoughtAssets.length;
+      return !_isEmpty(this.getBoughtAssets);
     }
   },
   methods: {

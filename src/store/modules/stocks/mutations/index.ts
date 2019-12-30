@@ -5,6 +5,8 @@ import _reject from "lodash/reject";
 import _remove from "lodash/remove";
 import _slice from "lodash/slice";
 import _indexOf from "lodash/indexOf";
+import { IAsset, IStockHistory } from "@/interfaces/stocks";
+import { defaultFunds } from "../state/index";
 
 export const mutations: MutationTree<IStocksState> = {
   addBoughtAsset(state, boughtAsset) {
@@ -27,5 +29,14 @@ export const mutations: MutationTree<IStocksState> = {
   },
   addCash(state, moneyAmount: number) {
     state.cash += moneyAmount;
+  },
+  initStocks(state, assets: IAsset[]) {
+    state.assets = assets;
+  },
+  resetFunds(state) {
+    state.cash = defaultFunds;
+  },
+  saveStockAction(state, stockAction: IStockHistory) {
+    state.history.push(stockAction);
   }
 };

@@ -1,6 +1,6 @@
 <template>
   <VApp>
-    <STHeader />
+    <STHeader v-if="verified" />
     <VContent style="height: calc(100% - 64px)">
       <RouterView />
     </VContent>
@@ -9,6 +9,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { mapState } from "vuex";
 import STHeader from "@/components/STHeader/STHeader.vue";
 
 export default Vue.extend({
@@ -16,8 +17,8 @@ export default Vue.extend({
   components: {
     STHeader
   },
-  data: () => ({
-    //
-  })
+  computed: {
+    ...mapState("user", ["verified"])
+  }
 });
 </script>
