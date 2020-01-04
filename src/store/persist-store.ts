@@ -3,5 +3,5 @@ import { IRootState } from ".";
 
 export const vuexPersistStore = new VuexPersistence<IRootState>({
   storage: localStorage,
-  modules: ["stocks", "user"]
+  modules: ["user"]
 });

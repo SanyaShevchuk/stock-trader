@@ -6,6 +6,7 @@ import { mapState } from "vuex";
 import _find from "lodash/find";
 import _get from "lodash/get";
 import _isEmpty from "lodash/isEmpty";
+import _round from "lodash/round";
 
 import STNoData from "@/components/STNoData/STNoData.vue";
 import { IStockHistory } from "@/interfaces/stocks";
@@ -23,7 +24,7 @@ export default {
     };
   },
   computed: {
-    ...mapState("stocks", ["history", "assets"]),
+    ...mapState("user", ["history", "assets"]),
     isAnyData(): boolean {
       // @ts-ignore
       return !_isEmpty(this.history);
@@ -31,7 +32,14 @@ export default {
   },
   methods: {
     getItemValue(stockAction: IStockHistory, header: string) {
-      return _get(stockAction, header, "--");
+      switch (header) {
+        case "price":
+          return _round(_get(stockAction.quote["USD"], header, 0), 3);
+        case "summary":
+          return _round(_get(stockAction, header, 0), 3);
+        default:
+          return _get(stockAction, header, "--");
+      }
     }
   }
 };

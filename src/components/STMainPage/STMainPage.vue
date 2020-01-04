@@ -3,31 +3,30 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { mapState } from "vuex";
-// import axios, { Method } from 'axios';
-const axios = require("axios").default;
+import { mapActions, mapGetters } from "vuex";
+
 export default Vue.extend({
   name: "STMainPage",
   computed: {
-    ...mapState("stocks", ["cash"])
+    ...mapGetters("user", ["getRoundedCash"])
   },
-  mounted() {
-    const options = {
-      headers: {
-        "X-CMC_PRO_API_KEY": "63fb5379-398f-4b7c-89bf-e68f52a946cc"
-      }
-    };
+  methods: {
+    ...mapActions("stocks", ["getAssets"])
+  },
+  async mounted() {
+    try {
+      await this.getAssets();
+    } catch (error) {
+      console.log(error);
+    }
 
-    axios
-      .get(
-        "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=10&convert=USD",
-        {
-          headers: {
-            "X-CMC_PRO_API_KEY": "63fb5379-398f-4b7c-89bf-e68f52a946cc"
-          }
-        }
-      )
-      .then((data: any) => console.log(data));
+    //   function download(content:any, fileName:string, contentType:string) {
+    //     var a = document.createElement("a");
+    //     var file = new Blob([content], {type: contentType});
+    //     a.href = URL.createObjectURL(file);
+    //     a.download = fileName;
+    //     a.click();
+    // }
   }
 });
 </script>

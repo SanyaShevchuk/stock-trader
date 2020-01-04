@@ -11,7 +11,7 @@
 
     <VSpacer />
     
-    <span class='STHeader__action-item'>Funds: ${{cash}}</span>
+    <span class='STHeader__action-item'>Funds: ${{getRoundedCash}}</span>
     <span @click="updateStocks">End day</span>
     <VIcon @click="openAccountMenu">alarm</VIcon>
     <VMenu attach="#kkk" absolute>

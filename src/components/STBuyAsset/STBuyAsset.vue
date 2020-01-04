@@ -4,6 +4,8 @@
 
 <script lang="ts">
 import Vue, { PropType } from "vue";
+import _round from "lodash/round";
+
 import STAsset from "@/components/STAsset/STAsset.vue";
 import { IAsset } from "@/interfaces/stocks";
 
@@ -26,6 +28,9 @@ export default Vue.extend({
   computed: {
     canBuy(): Boolean {
       return Boolean(this.quantity);
+    },
+    price(): number {
+      return _round(this.asset.quote["USD"].price, 3);
     }
   },
   methods: {

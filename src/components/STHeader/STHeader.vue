@@ -3,7 +3,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { mapState, mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import routesLinks from "@/constants/routes";
 
 export default Vue.extend({
@@ -29,7 +29,7 @@ export default Vue.extend({
     ]
   }),
   computed: {
-    ...mapState("stocks", ["cash"])
+    ...mapGetters("user", ["getRoundedCash"])
   },
   methods: {
     ...mapActions("stocks", ["updateStocks"]),

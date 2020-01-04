@@ -1,11 +1,18 @@
+import { IUserCredentials } from "@/interfaces/user";
+import { IUserAsset, IStockHistory } from "@/interfaces/stocks";
+
 export interface IUserState {
-  name?: string;
-  email?: string;
-  password?: string;
-  verified: boolean;
+  userCredentials?: IUserCredentials;
+  assets: IUserAsset[];
+  history: IStockHistory[];
   avatar?: string;
+  cash: number;
+  verified: boolean;
 }
 
 export const state: IUserState = {
+  assets: [],
+  history: [],
+  cash: 0,
   verified: false
 };

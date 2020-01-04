@@ -8,7 +8,7 @@ import { mapState } from "vuex";
 export default Vue.extend({
   name: "STAccount",
   computed: {
-    ...mapState("user", ["name", "email"])
+    ...mapState("user/userCredentials", ["name", "email"])
   }
 });
 </script>

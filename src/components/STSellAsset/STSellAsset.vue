@@ -6,8 +6,13 @@
 import Vue, { PropType } from "vue";
 
 import STAsset from "@/components/STAsset/STAsset.vue";
-import { IAsset } from "@/interfaces/stocks";
+import { IUserAsset } from "@/interfaces/stocks";
 import _pick from "lodash/pick";
+import _round from "lodash/round";
+
+interface ISellAsset extends IUserAsset {
+  price: number;
+}
 
 export default Vue.extend({
   name: "STSellAsset",
@@ -16,7 +21,7 @@ export default Vue.extend({
   },
   props: {
     asset: {
-      type: Object as PropType<IAsset>,
+      type: Object as PropType<ISellAsset>,
       required: true
     }
   },
@@ -28,12 +33,15 @@ export default Vue.extend({
   computed: {
     canSell(): Boolean {
       return Boolean(this.quantity);
+    },
+    price(): number {
+      return _round(this.asset.price, 3);
     }
   },
   methods: {
     onSellAsset() {
       const { quantity, asset } = this;
-      this.$emit("sell", { ...asset, sell: quantity });
+      this.$emit("sell", { ...asset, quantity });
     }
   }
 });

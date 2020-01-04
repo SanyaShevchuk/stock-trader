@@ -7,7 +7,7 @@ import { mapState, mapActions } from "vuex";
 import _some from "lodash/some";
 
 import STBuyAsset from "@/components/STBuyAsset/STBuyAsset.vue";
-import { IBoughtAsset } from "@/interfaces/stocks";
+import { IAsset } from "@/interfaces/stocks";
 
 export default Vue.extend({
   name: "STStocks",
@@ -18,8 +18,9 @@ export default Vue.extend({
     ...mapState("stocks", ["assets"])
   },
   methods: {
-    ...mapActions("stocks", ["buyAssets"]),
-    onBuyAsset(asset: IBoughtAsset) {
+    ...mapActions("user", ["buyAssets"]),
+    onBuyAsset(asset: IAsset) {
+      console.log(asset);
       this.buyAssets(asset);
     }
   }

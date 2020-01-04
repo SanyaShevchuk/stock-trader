@@ -8,13 +8,7 @@ import _isEmpty from "lodash/isEmpty";
 
 import STNoData from "@/components/STNoData/STNoData.vue";
 import STSellAsset from "@/components/STSellAsset/STSellAsset.vue";
-import { IBoughtAsset } from "@/interfaces/stocks";
-
-interface ISellAsset {
-  id: number;
-  quantity: number;
-  sell: number;
-}
+import { IUserAsset } from "@/interfaces/stocks";
 
 export default Vue.extend({
   name: "STPortfolio",
@@ -28,15 +22,15 @@ export default Vue.extend({
     };
   },
   computed: {
-    ...mapGetters("stocks", ["getBoughtAssets"]),
+    ...mapGetters("user", ["getBoughtAssets"]),
     isAnyData() {
       // @ts-ignore
       return !_isEmpty(this.getBoughtAssets);
     }
   },
   methods: {
-    ...mapActions("stocks", ["sellAssets"]),
-    onSellAsset(asset: ISellAsset) {
+    ...mapActions("user", ["sellAssets"]),
+    onSellAsset(asset: IUserAsset) {
       // @ts-ignore
       this.sellAssets(asset);
     }

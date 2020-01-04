@@ -3,23 +3,32 @@ export enum stockAction {
   SELL = "sell"
 }
 
+export interface IAssetPrice {
+  [prop: string]: {
+    price: number;
+  };
+}
+
 export interface IAsset {
   id: number;
   name: string;
-  price: number;
-  quantity?: number;
-  sell?: number;
+  quote: IAssetPrice;
+  symbol?: string;
+  cmc_rank?: number;
+  last_updated?: string;
 }
 
-export interface IBoughtAsset {
+export interface IUserAsset {
   id: number;
+  name: string;
   quantity: number;
+  action: stockAction;
 }
 
 export interface IStockHistory {
   assetId: number;
   assetName: string;
-  price: number;
+  quote: IAssetPrice;
   quantity: number;
   summary: number;
   action: stockAction;
