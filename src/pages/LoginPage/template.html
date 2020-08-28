@@ -1,0 +1,20 @@
+<VContainer class="LoginPage">
+    <VCard class="LoginPage__form">
+        <VForm>
+            <h2 class="LoginPage__title">Login</h2>
+            <VTextField 
+                label="Name"
+                v-model="name"
+            />
+            <VTextField 
+                label="Password"
+                type="password"
+                v-model="password"
+            />
+            <div class="LoginPage__form-actions">
+                 <VBtn class="LoginPage__sign-up" @click="onSignUp">Sign Up</VBtn>
+                <VBtn class="LoginPage__log-in primary" @click="onLogIn">Log In</VBtn>
+            </div>
+        </VForm>
+    </VCard>
+</VContainer>

@@ -1,0 +1,10 @@
+<STAsset :asset="asset" v-model.number="quantity">
+    <template v-slot:subtitle>
+        <span class="STSellAsset__asset-info ma-0 pa-4 pl-0">
+           {{assetInfo}}
+        </span>
+    </template>
+    <template v-slot:action>
+        <VBtn outlined class="STSellAsset__sell" :disabled="!canSell" @click="onSellAsset">{{$t('sell')}}</VBtn>
+    </template>
+</STAsset>

@@ -1,23 +1,26 @@
 <template>
   <VApp>
-    <STHeader />
-    <VContent style="height: calc(100% - 64px)">
+    <HeaderLayout v-if="verified" />
+    <ContentLayout>
       <RouterView />
-    </VContent>
+    </ContentLayout>
   </VApp>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import STHeader from "@/components/STHeader/STHeader.vue";
+import { mapState } from "vuex";
+import HeaderLayout from "@/layouts/HeaderLayout/HeaderLayout.vue";
+import ContentLayout from "@/layouts/ContentLayout/ContentLayout.vue";
 
 export default Vue.extend({
   name: "App",
   components: {
-    STHeader
+    HeaderLayout,
+    ContentLayout
   },
-  data: () => ({
-    //
-  })
+  computed: {
+    ...mapState("user", ["verified"])
+  }
 });
 </script>
