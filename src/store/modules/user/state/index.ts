@@ -2,17 +2,21 @@ import { IUserCredentials } from "@/interfaces/user";
 import { IUserAsset, IStockHistory } from "@/interfaces/stocks";
 
 export interface IUserState {
-  userCredentials?: IUserCredentials;
   assets: IUserAsset[];
   history: IStockHistory[];
+  userCredentials?: IUserCredentials;
   avatar?: string;
-  cash: number;
+  cash?: number;
   verified: boolean;
 }
 
-export const state: IUserState = {
+export const getDefaultUserState = () => ({
   assets: [],
   history: [],
-  cash: 0,
-  verified: false
-};
+  verified: false,
+  cash: undefined,
+  userCredentials: undefined,
+  avatar: undefined
+});
+
+export const state: IUserState = getDefaultUserState();

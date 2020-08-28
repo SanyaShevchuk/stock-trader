@@ -2,7 +2,7 @@ import { ActionTree } from "vuex";
 import _map from "lodash/map";
 import _pick from "lodash/pick";
 
-import { getCryptoCurrencyInfo } from "@/services/api/coinmarket";
+import { getCryptoCurrencyInfo } from "@/services/api/coinmarket/coinmarket.service";
 import { IStocksState } from "../state";
 import { IRootState } from "@/store";
 import { cryptocurrencyData } from "@/utils/mocks";

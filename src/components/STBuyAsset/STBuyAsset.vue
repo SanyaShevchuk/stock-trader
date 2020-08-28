@@ -29,8 +29,11 @@ export default Vue.extend({
     canBuy(): Boolean {
       return Boolean(this.quantity);
     },
-    price(): number {
-      return _round(this.asset.quote["USD"].price, 3);
+    price(): string {
+      return `(${this.$t("price")} ${_round(
+        this.asset.quote["USD"].price,
+        3
+      )})`;
     }
   },
   methods: {

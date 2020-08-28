@@ -19,6 +19,6 @@ export const getters: GetterTree<IUserState, IRootState> = {
     });
   },
   getRoundedCash(state) {
-    return _round(state.cash, 4);
+    return _round(state.cash!, 4);
   }
 };

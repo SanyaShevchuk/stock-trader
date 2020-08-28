@@ -1,20 +1,21 @@
 import { IRoute } from "@/interfaces/router";
 
-import STMainPage from "@/components/STMainPage/STMainPage.vue";
+import MainPage from "@/pages/MainPage/MainPage.vue";
 import LoginPage from "@/pages/LoginPage/LoginPage.vue";
 import SignUpPage from "@/pages/SignUpPage/SignUpPage.vue";
 
 import routesLinks from "@/constants/routes";
 
-const STPortfolio = () => import("@/components/STPortfolio/STPortfolio.vue");
-const STStocks = () => import("@/components/STStocks/STStocks.vue");
-const STStatistics = () => import("@/components/STStatistics/STStatistics.vue");
-const STAccount = () => import("@/components/STAccount/STAccount.vue");
+const PortfolioPage = () => import("@/pages/PortfolioPage/PortfolioPage.vue");
+const StocksPage = () => import("@/pages/StocksPage/StocksPage.vue");
+const StatisticsPage = () =>
+  import("@/pages/StatisticsPage/StatisticsPage.vue");
+const AccountPage = () => import("@/pages/AccountPage/AccountPage.vue");
 
 export const HomeRoute: IRoute = {
   path: routesLinks.home,
   name: "main",
-  component: STMainPage,
+  component: MainPage,
   meta: {
     requiresAuth: true
   }
@@ -22,7 +23,7 @@ export const HomeRoute: IRoute = {
 export const PortfolioRoute: IRoute = {
   path: routesLinks.portfolio,
   name: "portfolio",
-  component: STPortfolio,
+  component: PortfolioPage,
   meta: {
     requiresAuth: true
   }
@@ -30,7 +31,7 @@ export const PortfolioRoute: IRoute = {
 export const StocksRoute: IRoute = {
   path: routesLinks.stocks,
   name: "stocks",
-  component: STStocks,
+  component: StocksPage,
   meta: {
     requiresAuth: true
   }
@@ -38,7 +39,7 @@ export const StocksRoute: IRoute = {
 export const StatisticsRoute: IRoute = {
   path: routesLinks.statistics,
   name: "statistics",
-  component: STStatistics,
+  component: StatisticsPage,
   meta: {
     requiresAuth: true
   }
@@ -62,7 +63,7 @@ export const SignupRoute: IRoute = {
 export const AccountRoute: IRoute = {
   path: routesLinks.account,
   name: "account",
-  component: STAccount,
+  component: AccountPage,
   meta: {
     requiresAuth: true
   }

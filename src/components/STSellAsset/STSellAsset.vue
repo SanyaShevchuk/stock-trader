@@ -36,6 +36,11 @@ export default Vue.extend({
     },
     price(): number {
       return _round(this.asset.price, 3);
+    },
+    assetInfo(): string {
+      return `(${this.$t("price")}: ${this.price} | ${this.$t("quantity")}: ${
+        this.asset.quantity
+      })`;
     }
   },
   methods: {

@@ -1,0 +1,29 @@
+ <VAppBar height="48" class="HeaderLayout mb-2">
+<!--    <VToolbar>-->
+    <RouterLink
+        v-for='header in headers'
+        class='HeaderLayout__menu-item'
+        :key='header.value'
+        :to="header.path"
+    >
+        {{header.value}}
+    </RouterLink>
+
+    <VSpacer />
+    
+    <span class='HeaderLayout__action-item'>{{getRoundedCash}}$</span>
+    <VMenu absolute allow-overflow :offset-y="true" offset-x="true" transition="scale-transition">
+        <template v-slot:activator="{ on }">
+            <VBtn v-on="on">pic</VBtn>
+        </template>
+        <VList>
+            <VListItem @click="openAccountMenu">
+                {{$t('settings')}}
+            </VListItem>
+            <VListItem @click="onLogOut">
+                {{$t('logOut')}}
+            </VListItem>
+        </VList>
+    </VMenu>
+   
+</VAppBar>

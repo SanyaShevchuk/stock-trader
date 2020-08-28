@@ -7,7 +7,7 @@
             </VCardTitle>
         </VRow>
         <VRow class="STAsset__actions ma-0">
-            <input placeholder="Quantity" class="STAsset__quantity-input" :value.number="value" @input="handleInput($event.target.value)"/>
+            <input :placeholder="$t('quantity')" class="STAsset__quantity-input" :value.number="value" @input="handleInput($event.target.value)"/>
             <slot name="action" />
         </VRow>
     </VContainer>

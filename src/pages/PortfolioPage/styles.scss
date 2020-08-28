@@ -1,0 +1,19 @@
+@import '@/assets/styles/colors.scss';
+
+.PortfolioPage {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+    flex-wrap: wrap;
+
+    &__asset.v-card {
+        width: 45%;
+        height: 100%;
+
+        .STAsset__header {
+            background-color: $blue-light !important;
+            color: $blue-dark !important;
+        }
+    }
+}

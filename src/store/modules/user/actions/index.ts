@@ -17,12 +17,15 @@ export const actions: ActionTree<IUserState, IRootState> = {
     commit("resetFunds");
     console.log(state);
   },
+  logOut({ commit, state }) {
+    commit("resetStore");
+  },
   buyAssets({ state, commit }, userAsset: IUserAsset) {
     const assets = store.state.stocks.assets;
     const asset = _find(assets, ["id", userAsset.id])!;
     const spendMoney = userAsset.quantity * asset.quote["USD"].price;
 
-    if (spendMoney > state.cash) {
+    if (spendMoney > state.cash!) {
       return;
     }
 
